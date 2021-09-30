@@ -1,14 +1,13 @@
 ﻿class Application {
-  constructor(window, cadeauDAO, vueListeCadeau, vueAjouterCadeau){
+  constructor(window, vueListeSwitch, vueSwitch, switchDAO){
 
     this.window = window;
-    this.cadeauDAO = cadeauDAO;
 
-    this.vueListeCadeau = vueListeCadeau;
+    this.vueListeSwitch = vueListeSwitch;
 
-    this.vueAjouterCadeau = vueAjouterCadeau;
-    // C'est l'équivalent de function(cadeau){this.actionAjouterCadeau(cadeau)}
-    this.vueAjouterCadeau.initialiserActionAjouterCadeau(cadeau =>this.actionAjouterCadeau(cadeau));
+    this.vueSwitch = vueSwitch;
+
+    this.switchDAO = switchDAO;
 
     // C'est l'équivalent de function(){this.naviguer()}
     this.window.addEventListener("hashchange", () =>this.naviguer());
@@ -21,23 +20,21 @@
 
     if(!hash){
 
-      this.vueListeCadeau.initialiserListeCadeau(this.cadeauDAO.lister());
-      this.vueListeCadeau.afficher();
+      this.vueListeSwitch.initialiserListeSwitch(this.switchDAO.lister());
+      this.vueListeSwitch.afficher();
 
-    }else if(hash.match(/^#ajouter-cadeau/)){
+    }else{
 
-      this.vueAjouterCadeau.afficher();
+      let navigation = hash.match(/^#switch\/([0-9]+)/);
+      let idSwitch = navigation[1];
 
+      let switch_ = this.switchDAO.chercher(parseInt(idSwitch));
+      this.vueSwitch.initialiserSwitch(switch_);
+      this.vueSwitch.afficher();
     }
-  }
-
-  actionAjouterCadeau(cadeau){
-    this.cadeauDAO.ajouter(cadeau);
-    this.window.location.hash = "#";
-
   }
 
 }
 
-new Application(window, new CadeauDAO(), new VueListeCadeau(), new VueAjouterCadeau());
+new Application(window, new VueListeSwitch(), new VueSwitch(), new SwitchDAO());
 

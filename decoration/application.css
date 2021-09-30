@@ -1,16 +1,6 @@
 ﻿@import "normalize.css" ;
 
 @font-face {
-  font-family: 'The Perfect Christmas';
-  src: url('font/the_perfect_christmas/The Perfect Christmas.ttf')  format('truetype');
-}
-
-@font-face {
-  font-family: 'Waving at Christmas';
-  src: url('font/waving_at_christmas/Waving at Christmas.ttf')  format('truetype');
-}
-
-@font-face {
   font-family: 'Cream Cake';
   src: url('font/cream_cake/Cream Cake.ttf')  format('truetype');
 }
@@ -33,21 +23,21 @@
 }
 
 html {
-  font-family:'Cream Cake', sans-serif;
+  font-family:sans-serif;
   font-size:48px;
 }
 
-#liste-cadeau {
+#liste-switch {
   list-style-type:none;
 }
 
-.liste-cadeau-item {
-  color:var(--theme-rouge);
+.liste-switch-item {
+  color:var(--theme-noir);
   text-transform : capitalize;
   text-decoration:none;
 }
 
-#liste-cadeau li {
+#liste-switch li {
   position:relative;
   display:block;
   margin-bottom:0.25rem;
@@ -58,8 +48,7 @@ html {
   box-shadow: 2px 2px var(--theme-blanc);
 }
 
-#liste-cadeau li::before {
-   content:"X";
+#liste-switch li::before {
    text-align:center;
    color:var(--theme-rouge);
    font-size:1.25rem;
@@ -69,9 +58,7 @@ html {
    height:1rem;
    width:1rem;
 
-   font-family:'Hello Christmas Icon', sans-serif;
-
-
+   font-family:none;
 }
 
 fieldset {
@@ -92,7 +79,7 @@ textarea {
 #page-chargement-application{
   position:relative;
   height:100vh;
-  background-image:url(illustration/pngwing.com.png);
+  background-image:url(illustration/vanilla-js.png);
   background-repeat:no-repeat;
   background-size:contain;
   background-position:bottom center;
@@ -100,7 +87,6 @@ textarea {
 
   text-align:center;
   font-size:2rem;
-  font-family:'The Perfect Christmas', sans-serif;
   font-weight:normal;
   line-height:1.8rem;
 
@@ -120,33 +106,55 @@ textarea {
   }
 }
 
+@keyframes bgcolor {
+  0% {
+      background-color: #45a3e5
+  }
 
+  30% {
+      background-color: #66bf39
+  }
+
+  60% {
+      background-color: #eb670f
+  }
+
+  90% {
+      background-color: #f35
+  }
+
+  100% {
+      background-color: #864cbf
+  }
+}
 
 .page {
   position:relative;
-  background-color:var(--theme-bleu-pale);
   padding:5%;
   min-height: 100vh;
   box-sizing: border-box;
 
-  background-image:url(illustration/cadeau-noel.png);
+  background-image:url(illustration/switch-image.png);
   background-repeat:no-repeat;
   background-size:cover;
   background-position:right bottom;
   background-attachment:fixed;
-  background-size: 50%;
-  color:var(--theme-rouge);
+  background-size: 40%;
+  color:var(--theme-noir);
+
+  -webkit-animation: bgcolor 20s infinite;
+  animation: bgcolor 10s infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
 }
 
 
 .page h1{
-  font-family:'The Perfect Christmas', sans-serif;
   text-align:center;
   font-size:2rem;
-  font-family:'The Perfect Christmas', sans-serif;
   font-weight:normal;
   line-height:1.8rem;
-  color:var(--theme-vert);
+  color:var(--theme-noir);
   text-shadow: 2px 2px var(--theme-blanc);
 
 }
@@ -170,7 +178,6 @@ textarea {
   border:0px transparent solid;
   border-radius:var(--theme-bordure-rondeur);
   padding:0.25rem;
-  font-family:'Waving at Christmas', sans-serif;
   font-size:1rem;
   text-align:center;
   width:50%;

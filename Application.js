@@ -1,17 +1,15 @@
 ﻿class Application {
-  constructor(window, vueListeSwitch, vueSwitch, switchDAO){
+  constructor(window, vueListeSwitch, vueSwitch, switchDAO, VueAjouterSwitch){
 
     this.window = window;
-
-    this.vueListeSwitch = vueListeSwitch;
-
-    this.vueSwitch = vueSwitch;
-
     this.switchDAO = switchDAO;
-
+    this.vueListeSwitch = vueListeSwitch;
+    this.vueSwitch = vueSwitch;
+    this.VueAjouterSwitch = VueAjouterSwitch;
     // C'est l'équivalent de function(){this.naviguer()}
-    this.window.addEventListener("hashchange", () =>this.naviguer());
+    this.VueAjouterSwitch.initialiserActionAjouterSwitch(switch_ => this.actionAjouterSwitch(switch_));
 
+    this.window.addEventListener("hashchange", () => this.naviguer());
     this.naviguer();
   }
 
@@ -23,18 +21,16 @@
       this.vueListeSwitch.initialiserListeSwitch(this.switchDAO.lister());
       this.vueListeSwitch.afficher();
 
-    }else{
+    }else if(hash.match(/^#ajouter-switch/)){
 
-      let navigation = hash.match(/^#switch\/([0-9]+)/);
-      let idSwitch = navigation[1];
-
-      let switch_ = this.switchDAO.chercher(parseInt(idSwitch));
-      this.vueSwitch.initialiserSwitch(switch_);
-      this.vueSwitch.afficher();
+      this.VueAjouterSwitch.afficher();
     }
   }
-
+  
+  actionAjouterSwitch(switch_){
+    this.switchDAO.ajouter(switch_);
+    this.window.location.hash = "#";
+  }
 }
 
-new Application(window, new VueListeSwitch(), new VueSwitch(), new SwitchDAO());
-
+new Application(window, new VueListeSwitch(), new VueSwitch(), new SwitchDAO(), new VueAjouterSwitch());

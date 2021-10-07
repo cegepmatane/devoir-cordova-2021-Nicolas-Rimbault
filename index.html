@@ -8,6 +8,7 @@
   <script src="donnee/SwitchDAO.js"></script>
   <script src="vue/VueSwitch.js"></script>
   <script src="vue/VueListeSwitch.js"></script>
+  <script src="vue/VueAjouterSwitch.js"></script>
   <script defer src="Application.js"></script>
 
 </head>
@@ -18,11 +19,12 @@
   <script type="plain/text" id="html-vue-liste-switch">
   <div class="page">
     <h1>Liste de switch</h1>
+    <a class="action" href="#ajouter-switch">Ajouter un switch</a>
     <ul id="liste-switch">
-      <li><a href="#switch/{Switch.id}" class="liste-switch-item">{Switch.couleur}, {Switch.marque}</a></li>
+      <a href="#switch/{Switch.id}" class="liste-switch-item"><li>{Switch.couleur}, {Switch.marque}</li></a>
     </ul>
   </div>
-  </script>
+  </script> 
 
   <script type="plain/text" id="html-vue-switch">
   <div class="page">
@@ -57,11 +59,69 @@
     <span>Compatibilite RGB</span>
     <p id="switch-RGB-compatibility"></p>
 
-    <span>Duree de vue (nb click)</span>
+    <span>Duree de vie (nb click)</span>
     <p id="switch-duree-de-vie"></p>
  
     <a href="#" class="action">Revenir &agrave; la liste</a>
   </div>
+  </script>
+
+  <script type="plain/text" id="html-vue-ajouter-switch">
+    <div class="page">
+      <h1>Ajouter un switch</h1>
+      <form id="formulaire-ajouter">
+        <fieldset>
+          <legend>Identification du switch</legend>
+          <div>
+            <label for="switch-couleur">Nom</label>
+            <input type="text" id="switch-couleur"/>
+          </div>
+          <div>
+            <label for="switch-marque">marque</label>
+            <input type="text" id="switch-marque"/>
+          </div>
+          <div>
+            <label for="switch-prix">prix</label>
+            <input type="text" id="switch-prix"/>
+          </div>
+          <div>
+            <label for="switch-distanceActivation">Distance d'activation</label>
+            <input type="text" id="switch-distanceActivation"/>
+          </div>
+          <div>
+            <label for="switch-distanceMorte">Distance morte</label>
+            <input type="text" id="switch-distanceMorte"/>
+          </div>
+          <div>
+            <label for="switch-distanceTotal">Distance total</label>
+            <input type="text" id="switch-distanceTotal"/>
+          </div>
+          <div>
+            <label for="switch-type">Type</label>
+            <input type="text" id="switch-type"/>
+          </div>
+          <div>
+            <label for="switch-forceAction">Force d'action</label>
+            <input type="text" id="switch-forceAction"/>
+          </div>
+          <div>
+            <label for="switch-clickyOrNot">Clicky Or Not</label>
+            <input type="text" id="switch-clickyOrNot"/>
+          </div>
+          <div>
+            <label for="switch-RGB-compatibility">Compatibilite RGB</label>
+            <input type="text" id="switch-RGB-compatibility"/>
+          </div>
+          <div>
+            <label for="switch-duree-de-vie">Duree de vie (nb click)</label>
+            <input type="text" id="switch-duree-de-vie"/>
+          </div>
+        </fieldset>
+       
+        <input class="action" type="submit" id="enregistrer" value="Enregistrer"/>
+      </form>
+      <a href="#" class="action">Annuler et revenir &agrave; la liste</a>
+    </div>  
   </script>
 
 </body>

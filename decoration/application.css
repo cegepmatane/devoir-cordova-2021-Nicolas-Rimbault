@@ -62,8 +62,8 @@ html {
 }
 
 fieldset {
-  color:var(--theme-rouge);
-  border-color: var(--theme-rouge);
+  /* color:var(--theme-rouge); */
+  /* border-color: var(--theme-rouge); */
   border-radius:var(--theme-bordure-rondeur);
 }
 
@@ -140,7 +140,7 @@ textarea {
   background-position:right bottom;
   background-attachment:fixed;
   background-size: 40%;
-  color:var(--theme-noir);
+  /* color:var(--theme-noir); */
 
   -webkit-animation: bgcolor 20s infinite;
   animation: bgcolor 10s infinite;

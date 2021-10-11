@@ -25,6 +25,13 @@
 
       this.VueAjouterSwitch.afficher();
     }
+    else{
+      let navigation  = hash.match(/^#switch\/([0-9]+)/)
+      let idSwitch = navigation[1];
+
+      this.vueSwitch.initialiserSwitch(this.switchDAO.lister()[idSwitch]);
+      this.vueSwitch.afficher();
+    }
   }
   
   actionAjouterSwitch(switch_){
